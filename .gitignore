@@ -1,0 +1,4 @@
+Brewfile
+.idea/*
+.python-version
+env/*

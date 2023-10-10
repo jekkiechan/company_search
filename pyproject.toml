@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "company-search-mvp"
+version = "0.1.0"
+description = ""
+authors = ["ratanaruengj <trata@sertiscorp.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+ipykernel = "^6.24.0"
+langchain = "^0.0.237"
+openai = "^0.27.8"
+docarray = "^0.36.0"
+tiktoken = "^0.4.0"
+chromadb = "^0.4.2"
+openpyxl = "^3.1.2"
+tabulate = "^0.9.0"
+requests = "2.29.0"
+pandas = "2.0.0"
+faiss-cpu = "^1.7.4"
+streamlit = "^1.27.2"
+
+[tool.poetry.group.dev.dependencies]
+jupyterlab = "^4.0.2"
+black = "^23.9.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
