@@ -53,6 +53,7 @@ def format_date_column(data):
 
 
 def forward_fill_missing_data(data):
+    data["Company Name"] = data["Company Name"].ffill()
     ffill_cols = [
         "Date",
         "Person In Charge",
@@ -61,7 +62,6 @@ def forward_fill_missing_data(data):
         "Website",
         "Tel",
         "Confirmation Email",
-        "Require ticket",
     ]
     data[ffill_cols] = data.groupby("Company Name")[ffill_cols].ffill()
     return data

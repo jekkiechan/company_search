@@ -26,7 +26,7 @@ class DataFrameAgent:
         self._temperature = temperature
         self.agent = create_pandas_dataframe_agent(
             ChatOpenAI(model=model, temperature=temperature),
-            data=data,
+            df=data,
             verbose=verbose,
             agent_type=agent_type,
             **kwargs
