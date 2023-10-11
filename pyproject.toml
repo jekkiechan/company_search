@@ -20,6 +20,7 @@ requests = "2.29.0"
 pandas = "2.0.0"
 faiss-cpu = "^1.7.4"
 sentence-transformers = "^2.2.2"
+streamlit = "^1.27.2"
 
 [tool.poetry.group.dev.dependencies]
 jupyterlab = "^4.0.2"
