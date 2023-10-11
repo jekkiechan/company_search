@@ -3,3 +3,5 @@ Brewfile
 .python-version
 env/*
 __pycache__
+src.egg-info/*
+dist/*

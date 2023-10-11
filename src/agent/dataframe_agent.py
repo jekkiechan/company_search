@@ -35,3 +35,7 @@ class DataFrameAgent:
 
     def answer(self, question: str):
         return self.agent.run(question)
+
+
+if __name__ == '__main__':
+    pass

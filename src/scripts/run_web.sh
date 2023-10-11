@@ -1,1 +1,1 @@
-PYTHONPATH=. streamlit run src/web/app.py --server.headless True --browser.gatherUsageStats False
+streamlit run src/web/app.py --server.headless True --browser.gatherUsageStats False
