@@ -29,7 +29,7 @@ def main():
     """, unsafe_allow_html=True)
 
     st.header("Query Input")
-    st.write("Enter your question below:", className="big-font")
+    st.write("Enter your question below:")
 
     user_input = st.text_input(
         label="This is a text",
