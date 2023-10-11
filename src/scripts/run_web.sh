@@ -1,1 +1,1 @@
-streamlit run src/web/app.py --server.headless True --browser.gatherUsageStats False
+streamlit run app.py --server.headless True --browser.gatherUsageStats False
