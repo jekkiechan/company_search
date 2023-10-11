@@ -87,3 +87,8 @@ def preprocess(data):
     )
     data = data.astype(str).replace({"nan": None}).dropna(subset=["Startups Meeting"])
     return data.rename(columns=column_description_df["column_description"].to_dict())
+
+
+if __name__ == '__main__':
+    data = pd.read_csv("../../data/techsauce_companies.csv")
+    data = preprocess(data)
