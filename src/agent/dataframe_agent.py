@@ -4,11 +4,6 @@ from langchain.agents import create_pandas_dataframe_agent
 from langchain.chat_models import ChatOpenAI
 from langchain.agents.agent_types import AgentType
 
-from dotenv import load_dotenv
-
-ENV_PATH = "env/openai_key"
-load_dotenv(dotenv_path=ENV_PATH)
-
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_KEY")
 
 
