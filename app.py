@@ -4,9 +4,10 @@ import pandas as pd
 from src.preprocess.preprocess import preprocess
 from src.agent.dataframe_agent import DataFrameAgent
 
-DATA_DIR = "data/techsauce_companies.csv"
-data = pd.read_csv(DATA_DIR)
-data = preprocess(data)
+DATA_DIR = "data/company_database.xlsx"
+company = pd.read_excel(DATA_DIR, usecols="B:P", sheet_name="Company")
+people = pd.read_excel(DATA_DIR, usecols="B:AB", sheet_name="Person")
+data = preprocess(company, people)
 agent = DataFrameAgent(data=data)
 
 
