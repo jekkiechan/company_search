@@ -52,23 +52,8 @@ def format_date_column(data):
     return data
 
 
-def forward_fill_missing_data(data):
-    data["Company Name"] = data["Company Name"].ffill()
-    ffill_cols = [
-        "Date",
-        "Person In Charge",
-        "Title",
-        "Email",
-        "Website",
-        "Tel",
-        "Confirmation Email",
-    ]
-    data[ffill_cols] = data.groupby("Company Name")[ffill_cols].ffill()
-    return data
-
-
 def clean_text_columns(data):
-    text_cols = ["Company Name", "Startups Meeting", "Email", "Website"]
+    text_cols = ["Company Name", "Startups Meeting", "Company-email", "Company Website"]
     for col in text_cols:
         data[col] = data[col].str.strip().str.replace("\n|\t", "")
     data["Startups Meeting"] = data["Startups Meeting"].replace(
@@ -77,18 +62,23 @@ def clean_text_columns(data):
     return data
 
 
-def preprocess(data):
-    column_description_df = create_column_description_df()
+def preprocess(company_data, people_data):
+    data = people_data.merge(company_data, on=["Company Name"], how="left")
+    data = data.rename(columns={"Meeting history - Date of meeting": "Date"})
     data = (
         data.pipe(drop_columns)
         .pipe(format_date_column)
-        .pipe(forward_fill_missing_data)
         .pipe(clean_text_columns)
     )
-    data = data.astype(str).replace({"nan": None}).dropna(subset=["Startups Meeting"])
-    return data.rename(columns=column_description_df["column_description"].to_dict())
+    data = data.astype(str).replace({"nan": None}).rename(
+        columns={"Startups Meeting": "Startups that met with the company"}
+    )
+    return data
 
 
 if __name__ == '__main__':
-    data = pd.read_csv("../../data/techsauce_companies.csv")
-    data = preprocess(data)
+    company = pd.read_excel("data/company_database.xlsx", usecols="B:P", sheet_name="Company")
+    people = pd.read_excel("data/company_database.xlsx", usecols="B:AB", sheet_name="Person")
+    data = preprocess(company, people)
+    breakpoint()
+
